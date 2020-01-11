@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>Day Planner</title>
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+   <link rel="stylesheet" href="assets/css/style.css"/>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+   <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+         <h1 class="display-4">Day Planner</h1>
+         <p class="lead" id="date">Show date here</p>
+      </div>
+   </div>
+
+   <!-- 9am -->
+   <div class="container">
+      <form class="form-inline row" id="hour-block">
+         <!-- hour display -->
+         <div class="form-group mb-2 col-1" id="time-display">
+            <label for="staticEmail2" class="event"></label>
+            <input type="text" readonly class="form-control-plaintext" id="event" value="9am">
+         </div>
+         <!-- area for user to input event -->
+         <div class="form-group col-9">
+            <label for="user-event-input"></label>
+            <textarea class="form-control user-input" id="user-event-input" rows="3" placeholder="Add Event"></textarea>
+         </div>
+         <!-- save event button -->
+         <button type="add" class="btn btn-primary mb-2 col-2" id="save-event">Add Event</button>
+      </form>
+   </div>
+
+   <!-- 10am -->
+   <div class="container">
+      <form class="form-inline row" id="hour-block">
+         <!-- hour display -->
+         <div class="form-group mb-2 col-1" id="time-dislpay">
+            <label for="staticEmail2" class="event"></label>
+            <input type="text" readonly class="form-control-plaintext" id="event" value="10am">
+         </div>
+         <!-- user input -->
+         <div class="form-group col-9">
+            <label for="user-event-input"></label>
+            <textarea class="form-control user-input" id="user-event-input" rows="3" placeholder="Add Event"></textarea>
+         </div>
+         <!-- save event -->
+         <button type="add" class="btn btn-primary mb-2 col-2" id="save-event">Add Event</button>
+      </form>
+   </div>
+
+   <!-- 11am -->
+   <div class="container">
+      <form class="form-inline row" id="hour-block">
+         <div class="form-group mb-2 col-1" id="time-display">
+            <label for="staticEmail2" class="event"></label>
+            <input type="text" readonly class="form-control-plaintext" id="event" value="11am">
+         </div>
+         <div class="form-group col-9">
+            <label for="user-event-input"></label>
+            <textarea class="form-control user-input" id="user-event-input" rows="3" placeholder="Add Event"></textarea>
+         </div>
+         <button type="add" class="btn btn-primary mb-2 col-2" id="save-event">Add Event</button>
+      </form>
+   </div>
+
+   <!-- 12pm -->
+   <div class="container">
+      <form class="form-inline row" id="hour-block">
+         <div class="form-group mb-2 col-1" id="time-display">
+            <label for="staticEmail2" class="event"></label>
+            <input type="text" readonly class="form-control-plaintext" id="event" value="12pm">
+         </div>
+         <div class="form-group col-9">
+            <label for="user-event-input"></label>
+            <textarea class="form-control user-input" id="user-event-input" rows="3" placeholder="Add Event"></textarea>
+         </div>
+         <button type="add" class="btn btn-primary mb-2 col-2" id="save-event">Add Event</button>
+      </form>
+   </div>
+
+      <!-- 1pm -->
+   <div class="container">
+      <form class="form-inline row" id="hour-block">
+         <div class="form-group mb-2 col-1" id="time-display">
+            <label for="staticEmail2" class="event"></label>
+            <input type="text" readonly class="form-control-plaintext" id="event" value="1pm">
+         </div>
+         <div class="form-group col-9">
+            <label for="user-event-input"></label>
+            <textarea class="form-control user-input" id="user-event-input" rows="3" placeholder="Add Event"></textarea>
+         </div>
+         <button type="add" class="btn btn-primary mb-2 col-2" id="save-event">Add Event</button>
+      </form>
+   </div>
+
+   <!-- 2pm -->
+   <div class="container">
+      <form class="form-inline row" id="hour-block">
+         <div class="form-group mb-2 col-1" id="time-display">
+            <label for="staticEmail2" class="event"></label>
+            <input type="text" readonly class="form-control-plaintext" id="event" value="2pm">
+         </div>
+         <div class="form-group col-9">
+            <label for="user-event-input"></label>
+            <textarea class="form-control user-input" id="user-event-input" rows="3" placeholder="Add Event"></textarea>
+         </div>
+         <button type="add" class="btn btn-primary mb-2 col-2" id="save-event">Add Event</button>
+      </form>
+   </div>
+
+   <!-- 3pm -->
+   <div class="container">
+      <form class="form-inline row" id="hour-block">
+         <div class="form-group mb-2 col-1" id="time-display">
+            <label for="staticEmail2" class="event"></label>
+            <input type="text" readonly class="form-control-plaintext" id="event" value="3pm">
+         </div>
+         <div class="form-group col-9">
+            <label for="user-event-input"></label>
+            <textarea class="form-control user-input" id="user-event-input" rows="3" placeholder="Add Event"></textarea>
+         </div>
+         <button type="add" class="btn btn-primary mb-2 col-2" id="save-event">Add Event</button>
+      </form>
+   </div>
+
+   <!-- 4pm -->
+   <div class="container">
+      <form class="form-inline row" id="hour-block">
+         <div class="form-group mb-2 col-1" id="time-display">
+            <label for="staticEmail2" class="event"></label>
+            <input type="text" readonly class="form-control-plaintext" id="event" value="4pm">
+         </div>
+         <div class="form-group col-9">
+            <label for="user-event-input"></label>
+            <textarea class="form-control user-input" id="user-event-input" rows="3" placeholder="Add Event"></textarea>
+         </div>
+         <button type="add" class="btn btn-primary mb-2 col-2" id="save-event">Add Event</button>
+      </form>
+   </div>
+
+   <!-- 5pm -->
+   <div class="container">
+      <form class="form-inline row" id="hour-block">
+         <div class="form-group mb-2 col-1" id="time-display">
+            <label for="staticEmail2" class="event"></label>
+            <input type="text" readonly class="form-control-plaintext" id="event" value="5pm">
+         </div>
+         <div class="form-group col-9">
+            <label for="user-event-input"></label>
+            <textarea class="form-control user-input" id="user-event-input" rows="3" placeholder="Add Event"></textarea>
+         </div>
+         <button type="add" class="btn btn-primary mb-2 col-2" id="save-event">Add Event</button>
+      </form>
+   </div>
+
+   <script src="assets/js/script.js"></script>
+   <!-- <script src="moment.js"></script> -->
+</body>
+</html>

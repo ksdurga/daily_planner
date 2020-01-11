@@ -1,0 +1,7 @@
+.row, .col {
+   border: 2px solid black;
+};
+
+.user-input {
+   width: 506px;
+};
