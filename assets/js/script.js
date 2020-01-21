@@ -36,91 +36,133 @@ browser has to track current date and time
 
 
 //GLOBAL VARIABLES
+$(document).ready(function() {
 
-var eventInput = $("#user-event-input");
-var saveBtn1 = $("#save-event1");
-var saveBtn2 = $("#save-event2");
-var saveBtn3 = $("#save-event3");
-var saveBtn4 = $("#save-event4");
-var saveBtn5 = $("#save-event5");
-var saveBtn6 = $("#save-event6");
-var saveBtn7 = $("#save-event7");
-var saveBtn8 = $("#save-event8");
-var saveBtn9 = $("#save-event9");
-var time = $("#hour-block");
-var dateDisplay = $("#date");
+   var currentTime = moment().format('H');
+   var currentTimeNum = parseInt(currentTime);
+   console.log(currentTime);
+   var currentDate = moment().format('MMMM Do YYYY');
 
-var allInputs = [];
-var currentTime = moment().format('H');
-console.log(currentTime);
-var saveBtns = [saveBtn1, saveBtn2, saveBtn3, saveBtn4, saveBtn5, saveBtn6, saveBtn7, saveBtn8, saveBtn9];
-var currentDate = moment().format('MMMM Do YYYY');
+   var allTimes = ["9AM", "10AM", "11AM", "12PM", "1PM", "2PM", "3PM", "4PM", "5PM"];
+   var milTimes = [9, 10, 11, 12, 13, 14, 15, 16, 17];
 
-var time9 = $("#event9").val();
-var time10 = $("#event10").val();
-var time11 = $("#event11").val();
-var time12 = $("#event12").val();
-var time13 = $("#event13").val();
-var time14 = $("#event14").val();
-var time15 = $("#event15").val();
-var time16 = $("#event16").val();
-var time17 = $("#event17").val();
+   console.log(typeof currentTimeNum);
+   console.log(currentTimeNum);
+   
 
-var allTimes = [time9, time10, time11, time12, time13, time14, time15, time16, time17];
-console.log(allTimes);
+   
 
-// $("#user-event-input").style.backgroundColor = "rgb(129, 202, 236)";
 
-var eventColor = function() {
-   for (i=0; i<allTimes.length; i++) {
-      if (allTimes[i] > currentTime) {
-         eventInput.css("background-color", "rgb(129, 202, 236)");
-         console.log(eventInput.css);
-      }
-      
-      if (allTimes[i] < currentTime) {
-         eventInput.css("background-color", "rgb(167, 167, 167)");
-      }
-      if (allTimes[i] = currentTime) {
-         eventInput.css("background-color", "rgb(106, 248, 153)");
+   //STORAGE
+   
+   var saveEvent = function (timeSave) {
+      var hour = timeSave;
+      var event = $("#"+hour).val();
+      localStorage.setItem(hour, event);
+   };
+   
+   function createBlocks () {
+      for(i=0; i<allTimes.length; i++) {
+         var lsInput = localStorage.getItem(allTimes[i]);
+
+         var maindiv = $(".planner");
+         //create form
+         var form = $("<form>");
+
+         //create divs
+         var saveDiv = $("<div>");
+         var timeDiv = $("<div>");
+         var textDiv = $("<div>");
+
+         //create items to put in divs
+         var saveBtn = $("<button>");
+         var textArea = $("<textarea>");
+         var timeText = $("<p>");
+
+         //setting attributes
+         // maindiv.attr("data-time", "times");
+
+         timeDiv
+            .attr("data-class", milTimes[i])
+            .attr("class", "form-group mb-2 col-2")
+            .attr("value", milTimes[i]);
+
+         textDiv
+            .attr("data-class", milTimes[i])
+            .attr("class", "form-group col-9");
+
+         saveDiv.attr("data-class", allTimes[i]);
+
+
+         timeText
+            .text(allTimes[i])
+            .attr("data-id", milTimes[i]);
+
+         saveBtn
+            .attr("class", "btn btn-primary mb-2")
+            .attr("data-id", allTimes[i])
+            .text("Save");
+
+         textArea
+            .attr("placeholder", "Enter an event and click save.")
+            .attr("class", "form-control text-display")
+            .attr("id", allTimes[i])
+            .attr("data-id", allTimes[i]);
+
+         if (lsInput) {
+            var event = localStorage.getItem(allTimes[i]);
+            textArea.text(event);
+         };
+
+         form
+            .attr("class", "row")
+            .attr("data-time", milTimes[i])
+
+         //save button on click
+         saveBtn.on("click", function(e){
+            e.preventDefault();
+            var timeSave = $(this).attr("data-id");
+            saveEvent(timeSave);
+         });
+
+         //appending
+         timeDiv.append(timeText);
+         textDiv.append(textArea);
+         saveDiv.append(saveBtn);
+
+         
+         form.append(timeDiv);
+         form.append(textDiv);
+         form.append(saveDiv);
+
+         maindiv.append(form);
+
       }
    }
-}
-eventColor();
-//storage
-var lsInput = localStorage.getItem("usereventinput").valueOf();
-var updateLocalStorage = function () {
-   localStorage.setItem("usereventinput", JSON.stringify(allInputs));
-};
-if (lsInput) {
-   allInputs=JSON.parse(lsInput);
-}
 
-//push user input to array
-saveBtns.forEach(function(item){
-   item.on("click", function(e){
-      var userInput = document.getElementById("user-event-input").value;
-      allInputs.push(document.getElementById("user-event-input").value);
-      console.log(allInputs);
-      e.preventDefault();
-      console.log("click");
-      $("#user-event-input").text(userInput);
-      updateLocalStorage();
-      return allInputs;
-   // for (i=0; i<saveBtns.length; i++) {
-   //    saveBtns[i].on("click", function(event){
-   //       event.stopPropagation();
-   //       event.preventDefault();
-   //       console.log("click");
-   //       $("#user-event-input").text(userInput);
-   //       updateLocalStorage();
-   //    })
-   })
+   //Makes page (except jumbotron)
+   createBlocks();
+
+   //Display date
+   $("#date").text(currentDate);
+
+   var eventColor = function() {
+      var timeblocks = document.getElementsByClassName("row");
+      console.log(timeblocks);
+      for(i=0; i<timeblocks.length; i++) {
+         var allData = timeblocks[i].getAttribute("data-time");
+         console.log(allData);
+         if (allData > currentTimeNum) {
+            timeblocks[i].style.backgroundColor ="rgb(129, 202, 236)";
+         };
+         if (allData < currentTimeNum) {
+            style.backgroundColor ="rgb(167, 167, 167)";
+         };
+         if (allData == currentTimeNum) {
+            style.backgroundColor ="rgb(106, 248, 153)";
+         };
+      };
+   };
+   eventColor();
+
 });
-
-
-//write user input into text box
-
-
-//Display date
-$("#date").text(currentDate);
