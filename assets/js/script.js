@@ -34,7 +34,6 @@ browser has to track current date and time
 //    }
 // }
 
-
 //GLOBAL VARIABLES
 $(document).ready(function() {
 
@@ -156,10 +155,10 @@ $(document).ready(function() {
             timeblocks[i].style.backgroundColor ="rgb(129, 202, 236)";
          };
          if (allData < currentTimeNum) {
-            style.backgroundColor ="rgb(167, 167, 167)";
+            timeblocks[i].style.backgroundColor ="rgb(167, 167, 167)";
          };
          if (allData == currentTimeNum) {
-            style.backgroundColor ="rgb(106, 248, 153)";
+            timeblocks[i].style.backgroundColor ="rgb(106, 248, 153)";
          };
       };
    };
